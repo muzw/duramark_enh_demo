@@ -1,0 +1,33 @@
+{
+  "source": "Archived DuraMark-Enh V16 evaluation outputs",
+  "selection": "First three WAV filenames in lexicographic order; no selection by detection score or listening quality",
+  "condition": "No attack; 8-bit watermark",
+  "format": "16 kHz mono PCM16 WAV; original sample rate and frame count; no gain, trimming or audio effects",
+  "purpose": "Listening examples, not a new evaluation or a replacement for reported aggregate metrics",
+  "samples": [
+    {
+      "id": "0001",
+      "archive_filename": "0001_10010001.wav",
+      "sha256": "b2ed7c170733052294472978f127028ad685d520f73bebb6705681b7b02bd05c",
+      "original_sha256": "04d7727bc906a72cc1df626f2e29bf742718e26d2c72d9dac1fc2839efb6fd7b",
+      "sample_rate_hz": 16000,
+      "channels": 1
+    },
+    {
+      "id": "0002",
+      "archive_filename": "0002_01100101.wav",
+      "sha256": "48ff00a24a674bafa012c25095c097dce74cc8cc013c78e3796e3c9d2ea8ff71",
+      "original_sha256": "1992b0caa36e23f0b79a181dc2f78228e36bc6fd87308bf1273af42cae20435a",
+      "sample_rate_hz": 16000,
+      "channels": 1
+    },
+    {
+      "id": "0003",
+      "archive_filename": "0003_11110001.wav",
+      "sha256": "ef1af7ef011e2d91ec41acb840c4b7032bdbaa28f8896c65af275a5607e8b595",
+      "original_sha256": "7094429a7a99ec23a82e3b1b41f3f8f0facceceaa45ecad97b8782cadf4c107f",
+      "sample_rate_hz": 16000,
+      "channels": 1
+    }
+  ]
+}

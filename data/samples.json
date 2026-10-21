@@ -1,0 +1,29 @@
+{
+  "dataset": "AISHELL-3",
+  "model": "DuraMark-Enh",
+  "watermark": "8-bit",
+  "condition": "No attack",
+  "samples": [
+    {
+      "id": "0001",
+      "text": "现在韩立不管结果如何南宫婉是否会答应他韩立都要强行将此女带走他一向理智大于情感但这一次",
+      "watermark_bits": "10010001",
+      "duration_seconds": 10.5186875,
+      "audio": "audio/enh/0001_10010001.wav"
+    },
+    {
+      "id": "0002",
+      "text": "然后底下真的清一色刷屏说你那个是哪个蛋哪家蛋糕后来我们就想我说要不我去找一下他",
+      "watermark_bits": "01100101",
+      "duration_seconds": 6.130125,
+      "audio": "audio/enh/0002_01100101.wav"
+    },
+    {
+      "id": "0003",
+      "text": "现在是一件事以为要赚两千万结果赚了一千万所以即使大喊大叫性质也是不一样的情绪也是不一样的",
+      "watermark_bits": "11110001",
+      "duration_seconds": 9.1370625,
+      "audio": "audio/enh/0003_11110001.wav"
+    }
+  ]
+}
