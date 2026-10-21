@@ -3,67 +3,82 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#faf9f6">
-    <meta name="description" content="Audio examples of DuraMark-Enh, an enhanced implementation of the DuraMark syllable-duration watermarking framework for synthesized speech.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Audio demo for DuraMark: A Duration-Embedded Watermarking Framework for Synthesized Speech.">
+    <meta name="keywords" content="speech watermarking, duration-embedded watermarking, duration-controllable TTS, DuraMark">
     <title>DuraMark: A Duration-Embedded Watermarking Framework for Synthesized Speech</title>
     <link rel="stylesheet" href="assets/site.css">
     <script src="assets/site.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#listening-examples">Skip to audio examples</a>
-    <header class="masthead page-width">
-      <a class="wordmark" href="./" aria-label="DuraMark demo home">DuraMark<span aria-hidden="true"> / </span><span class="wordmark-detail">Audio demo</span></a>
-      <a class="quiet-link" href="https://github.com/muzw/duramark_enh_demo">GitHub <span aria-hidden="true">↗</span></a>
-    </header>
+    <a class="skip-link" href="#results">Skip to audio examples</a>
+    <main class="paper-container">
+      <header class="paper-header">
+        <h1>DuraMark: A Duration-Embedded Watermarking Framework for Synthesized Speech</h1>
+        <div class="authors">
+          <p class="author-names">Zhenwei Mou<sup>1</sup>, Xitong Zhai<sup>1</sup>, Liping Chen<sup>1</sup>, Kong Aik Lee<sup>2</sup>, Zhenhua Ling<sup>1</sup>, Haizhou Li<sup>3</sup>, and Xin Fang<sup>1</sup></p>
+          <div id="affiliations" class="affiliations">
+            <p><sup>1</sup> University of Science and Technology of China, China</p>
+            <p><sup>2</sup> The Hong Kong Polytechnic University, Hong Kong, China</p>
+            <p><sup>3</sup> The Chinese University of Hong Kong, China</p>
+          </div>
+          <p class="corresponding-author">Corresponding author: <a id="corresponding-email" href="mailto:lipchen@ustc.edu.cn">lipchen@ustc.edu.cn</a></p>
+        </div>
+        <p class="paper-links"><a href="https://muzw.github.io/duramark_demo/">Original Interspeech demo</a><span aria-hidden="true"> · </span><a href="https://github.com/muzw/duramark_enh_demo">Demo repository</a></p>
+        <ul class="keywords" aria-label="Keywords">
+          <li class="badge badge-blue">speech watermarking</li>
+          <li class="badge badge-gray">duration-embedded watermarking</li>
+          <li class="badge badge-green">robustness</li>
+          <li class="badge badge-cyan">duration-controllable TTS</li>
+        </ul>
+      </header>
 
-    <main class="page-width">
-      <section class="hero" aria-labelledby="paper-title">
-        <p class="eyebrow">Syllable duration · Speech watermarking</p>
-        <h1 id="paper-title"><span class="title-name">DuraMark:</span> A Duration-Embedded Watermarking Framework for Synthesized Speech</h1>
-        <p class="authors">Zhenwei Mou, Xitong Zhai, Liping Chen, Kong Aik Lee, Zhenhua Ling, Haizhou Li, and Xin Fang</p>
-        <p class="introduction">DuraMark embeds watermark bits in syllable durations during speech synthesis. A duration extractor recovers these durations for watermark detection and information extraction.</p>
-        <nav class="hero-links" aria-label="Demo links">
-          <a class="button button-primary" href="#listening-examples">Listen to DuraMark-Enh <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="https://muzw.github.io/duramark_demo/">Original Interspeech demo <span aria-hidden="true">↗</span></a>
-        </nav>
+      <section aria-labelledby="abstract-title">
+        <h2 id="abstract-title" class="section-title">Abstract</h2>
+        <p id="paper-abstract" class="abstract">Loading abstract…</p>
+        <noscript><p>DuraMark embeds watermark bits in syllable durations during speech synthesis, with Basic and Enh implementations. Enable JavaScript to load the full abstract and audio examples.</p></noscript>
       </section>
 
-      <section class="method-section" aria-labelledby="method-title">
-        <div class="section-heading">
-          <p class="eyebrow">The framework</p>
-          <h2 id="method-title">Two implementations of DuraMark</h2>
-        </div>
-        <div class="method-grid">
-          <article class="method-card method-basic">
-            <div class="method-card-heading"><h3>DuraMark-Basic</h3><span class="method-label">Basic duration control</span></div>
-            <p>Uses duration prediction, duration-controllable synthesis, and duration extraction. It omits reward-weighted fine-tuning and duration-aware CFG.</p>
-          </article>
-          <article class="method-card method-enh">
-            <div class="method-card-heading"><h3>DuraMark-Enh</h3><span class="method-label">Enhanced duration control</span></div>
-            <p>Adds reward-weighted fine-tuning (RWF) of the LLM and duration-aware classifier-free guidance (CFG) at inference to improve duration control and watermark accuracy.</p>
-          </article>
-        </div>
-        <figure class="method-figure">
-          <a class="figure-image" href="assets/enhanced-duration-control.png" aria-label="Open the enhanced duration control figure at full size"><img src="assets/enhanced-duration-control.png" alt="Enhanced duration control in DuraMark: reward-weighted fine-tuning updates the LLM using a detection reward; duration-aware CFG combines unconditional, duration-dropped, and fully conditioned flow estimates during synthesis." width="1097" height="667" loading="lazy"></a>
-          <figcaption><span class="figure-label">Enhanced duration control.</span> Reward-weighted fine-tuning (left) and inference with duration-aware CFG (right).</figcaption>
+      <section aria-labelledby="architecture-title">
+        <h2 id="architecture-title" class="section-title">Model Architecture</h2>
+        <p>DuraMark has two implementations. <strong>DuraMark-Basic</strong> uses duration-controllable synthesis and duration extraction. <strong>DuraMark-Enh</strong> adds reward-weighted fine-tuning (RWF) of the LLM and duration-aware classifier-free guidance (CFG) at inference. Both share the watermark embedding, detection, and extraction procedures.</p>
+        <figure class="architecture-figure">
+          <div class="architecture-panels">
+            <div class="architecture-panel tts-panel">
+              <a class="figure-link" href="assets/tts.png" aria-label="Open the duration-controllable TTS architecture at full size"><img src="assets/tts.png" alt="Architecture of the duration-controllable TTS model in DuraMark." width="778" height="343" loading="lazy"></a>
+              <p class="panel-caption">(a) Duration-controllable TTS</p>
+            </div>
+            <div class="architecture-panel extractor-panel">
+              <a class="figure-link" href="assets/duration-extractor.png" aria-label="Open the duration extractor architecture at full size"><img src="assets/duration-extractor.png" alt="Architecture of the duration extractor used to recover syllable durations." width="442" height="372" loading="lazy"></a>
+              <p class="panel-caption">(b) Duration extractor</p>
+            </div>
+          </div>
+          <figcaption>Fig. 1. Architectures of the duration-controllable TTS and duration extractor used in DuraMark.</figcaption>
+        </figure>
+        <figure class="enhancement-figure">
+          <a class="figure-link" href="assets/enhanced-duration-control.png" aria-label="Open the enhanced duration control figure at full size"><img src="assets/enhanced-duration-control.png" alt="Enhanced duration control in DuraMark: reward-weighted fine-tuning of the LLM on the left, and inference with duration-aware CFG on the right." width="1097" height="667" loading="lazy"></a>
+          <figcaption>Fig. 2. Enhanced duration control in DuraMark: reward-weighted fine-tuning (left) and inference with duration-aware CFG (right).</figcaption>
         </figure>
       </section>
 
-      <section class="listening-section" id="listening-examples" aria-labelledby="listening-title">
-        <div class="section-heading listening-heading">
-          <div><p class="eyebrow">Listen</p><h2 id="listening-title">DuraMark-Enh examples</h2></div>
-          <p class="listening-note">Synthesized speech with 8-bit watermark messages.</p>
+      <section id="results" aria-labelledby="results-title">
+        <h2 id="results-title" class="section-title">Results</h2>
+        <p>The following examples are synthesized by DuraMark-Enh using texts from the Chinese AISHELL-3 test set.</p>
+        <div class="audio-results">
+          <h3>AISHELL-3</h3>
+          <p id="sample-context" class="sample-context" hidden></p>
+          <div class="sample-status" id="sample-status" role="status" aria-live="polite">Loading audio examples…</div>
+          <div class="table-scroll" id="sample-table-wrapper" hidden>
+            <table class="audio-table">
+              <caption class="visually-hidden">DuraMark-Enh synthesized speech examples from AISHELL-3</caption>
+              <thead><tr><th scope="col">Text</th><th scope="col">DuraMark-Enh</th></tr></thead>
+              <tbody id="samples"></tbody>
+            </table>
+          </div>
+          <noscript><p class="sample-status">Enable JavaScript to load the audio examples and their transcripts.</p></noscript>
         </div>
-        <p class="sample-context" id="sample-context" hidden></p>
-        <div class="sample-status" id="sample-status" role="status" aria-live="polite">Loading audio examples…</div>
-        <div class="sample-grid" id="samples"></div>
-        <noscript><p class="sample-status">Enable JavaScript to load the audio examples and their transcripts.</p></noscript>
       </section>
+      <footer class="paper-footer"><a href="https://github.com/muzw/duramark_enh_demo">Demo repository</a><span aria-hidden="true"> · </span><a href="https://muzw.github.io/duramark_demo/">Original demo</a></footer>
     </main>
-
-    <footer class="page-width footer">
-      <p>DuraMark · Audio examples</p>
-      <div><a href="https://github.com/muzw/duramark_enh_demo">Demo repository</a><span aria-hidden="true">·</span><a href="https://muzw.github.io/duramark_demo/">Original demo</a></div>
-    </footer>
   </body>
 </html>

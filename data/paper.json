@@ -1,0 +1,9 @@
+{
+  "abstract": "Large language model (LLM)-based text-to-speech (TTS) models have achieved remarkable voice cloning capabilities, raising concerns about potential deepfake misuse. Speech watermarking mitigates this by embedding traceable information into generated speech, but signal-level watermarks can be vulnerable to neural codec and vocoder resynthesis. We propose DuraMark, a duration-embedded watermarking framework that embeds bits by editing the parity of predicted syllable durations during TTS generation. A duration extractor recovers syllable durations for correlation-based detection and soft-voting recovery of periodically embedded messages. The framework supports two implementations: DuraMark-Basic prioritizes training and inference efficiency, while DuraMark-Enh improves duration-control and watermark accuracy using Reward-Weighted Fine-Tuning (RWF) of the autoregressive LLM and duration-aware Classifier-Free Guidance (CFG) in the flow matching decoder. Both implementations share the embedding, detection, and extraction procedures. Experiments compare their duration-control accuracy and watermark robustness under neural resynthesis and conventional signal-processing attacks, and analyze the effects of speech length and transcript accuracy on detection. In the evaluated neural codec and vocoder resynthesis settings, DuraMark-Enh improves detection rates over DuraMark-Basic.",
+  "affiliations": [
+    "University of Science and Technology of China, China",
+    "The Hong Kong Polytechnic University, Hong Kong, China",
+    "The Chinese University of Hong Kong, China"
+  ],
+  "corresponding_email": "lipchen@ustc.edu.cn"
+}

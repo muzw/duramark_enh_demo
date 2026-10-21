@@ -12,7 +12,7 @@ The journal manuscript presents one DuraMark framework with two implementations:
 - Journal demo: https://muzw.github.io/duramark_enh_demo/
 - Original Interspeech demo: https://muzw.github.io/duramark_demo/
 
-The original demo remains a separate site. This repository contains the journal audio demo, not the model implementation or checkpoints.
+The page follows the original demo's academic-paper layout, with the current title, author affiliations, abstract, model figures, and a table of Enh audio examples. The original demo remains a separate site. This repository contains the journal audio demo, not the model implementation or checkpoints.
 
 ## Audio samples
 
@@ -36,6 +36,7 @@ Open http://127.0.0.1:8000/. The page loads `data/samples.json` over HTTP; openi
 - `assets/`: local CSS, JavaScript, and the duration-control figure rendered from the current manuscript
 - `audio/enh/`: PCM16 playback samples
 - `data/samples.json`: sample text, watermark bits and audio links
+- `data/paper.json`: current manuscript abstract and affiliation metadata
 - `docs/sample-provenance.json`: source and file-integrity records
 
 GitHub Pages serves the root of the `main` branch. The page uses no analytics, external scripts or external font services.
