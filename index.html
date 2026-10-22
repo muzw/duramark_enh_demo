@@ -4,27 +4,33 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
-    <meta name="description" content="Audio demo for DuraMark: A Duration-Embedded Watermarking Framework for Synthesized Speech.">
-    <meta name="keywords" content="speech watermarking, duration-embedded watermarking, duration-controllable TTS, DuraMark">
-    <title>DuraMark: A Duration-Embedded Watermarking Framework for Synthesized Speech</title>
-    <link rel="stylesheet" href="assets/site.css?v=2">
-    <script src="assets/site.js?v=2" defer></script>
+    <meta name="description" content="Demo page for DuraMark: Duration-Embedded Watermarking in LLM-based TTS, accepted to INTERSPEECH 2026.">
+    <meta name="keywords" content="speech watermarking, duration-embedded watermarking, LLM-based TTS, duration-controllable TTS, INTERSPEECH 2026">
+    <title>DuraMark: Duration-Embedded Watermarking in LLM-based TTS</title>
+    <link rel="stylesheet" href="assets/site.css?v=3">
+    <script src="assets/site.js?v=3" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#results">Skip to audio examples</a>
     <main class="paper-container">
       <header class="paper-header">
-        <h1>DuraMark: A Duration-Embedded Watermarking Framework for Synthesized Speech</h1>
-        <div class="authors">
-          <p class="author-names">Zhenwei Mou<sup>1</sup>, Xitong Zhai<sup>1</sup>, Liping Chen<sup>1</sup>, Kong Aik Lee<sup>2</sup>, Zhenhua Ling<sup>1</sup>, Haizhou Li<sup>3</sup>, and Xin Fang<sup>1</sup></p>
-          <div id="affiliations" class="affiliations">
-            <p><sup>1</sup> University of Science and Technology of China, China</p>
-            <p><sup>2</sup> The Hong Kong Polytechnic University, Hong Kong, China</p>
-            <p><sup>3</sup> The Chinese University of Hong Kong, China</p>
-          </div>
-          <p class="corresponding-author">Corresponding author: <a id="corresponding-email" href="mailto:lipchen@ustc.edu.cn">lipchen@ustc.edu.cn</a></p>
-        </div>
-        <p class="paper-links"><a href="https://muzw.github.io/duramark_demo/">Original Interspeech demo</a><span aria-hidden="true"> · </span><a href="https://github.com/muzw/duramark_enh_demo">Demo repository</a></p>
+        <h1>DuraMark: Duration-Embedded Watermarking in LLM-based TTS</h1>
+        <div class="authors"><p class="author-names">Zhenwei Mou<sup>1</sup>, Weili Jiang<sup>2</sup>, Liping Chen<sup>1</sup>, Zhen-Hua Ling<sup>1</sup>, Kong Aik Lee<sup>3</sup>, Kai Gao<sup>2</sup>, Boyu Zhao<sup>2</sup></p>
+					<p class="legacy-affiliation">
+						<sup>1</sup> University of Science and Technology of China, China
+					</p>
+					<p class="legacy-affiliation">
+						<sup>2</sup> Institute of Forensic Science, Ministry of Public Security, China
+					</p>
+					<p class="legacy-affiliation">
+						<sup>3</sup> The Hong Kong Polytechnic University, China
+					</p>
+					<p class="legacy-affiliation">
+						zwmu@mail.ustc.edu.cn, {lipchen, zhling}@ustc.edu.cn, {jiangweili, gaokai}@cifs.gov.cn, zhaoboyu_uestc@163.com, kong-aik.lee@polyu.edu.hk
+					</p>
+					<p class="legacy-affiliation">
+						Accepted to INTERSPEECH 2026
+					</p></div>
         <ul class="keywords" aria-label="Keywords">
           <li class="badge badge-blue">speech watermarking</li>
           <li class="badge badge-gray">duration-embedded watermarking</li>
@@ -32,53 +38,75 @@
           <li class="badge badge-cyan">duration-controllable TTS</li>
         </ul>
       </header>
-
       <section aria-labelledby="abstract-title">
         <h2 id="abstract-title" class="section-title">Abstract</h2>
-        <p id="paper-abstract" class="abstract">Loading abstract…</p>
-        <noscript><p>DuraMark embeds watermark bits in syllable durations during speech synthesis, with Basic and Enh implementations. Enable JavaScript to load the full abstract and audio examples.</p></noscript>
+        <p class="abstract">Large language model (LLM)-based text-to-speech (TTS) models have achieved remarkable voice cloning capabilities, raising concerns about potential deepfake misuse. Speech watermarking mitigates this by embedding traceable information into generated speech. Mainstream watermark methods operate at the signal level (waveform or spectrogram), rendering the watermark vulnerable to generative attack (e.g., neural codec and vocoder). To address this, we propose DuraMark, a robust information-level watermarking framework. It utilizes syllable duration editing to achieve watermark embedding. Specifically, DuraMark integrates a duration-controllable TTS model to edit syllable durations during synthesis, coupled with a duration extractor to extract these durations for detection. Experiments demonstrate DuraMark's superior robustness against generative attacks, significantly outperforming signal-level baselines.</p>
       </section>
-
       <section aria-labelledby="architecture-title">
         <h2 id="architecture-title" class="section-title">Model Architecture</h2>
-        <p>DuraMark has two implementations. <strong>DuraMark-Basic</strong> uses duration-controllable synthesis and duration extraction. <strong>DuraMark-Enh</strong> adds reward-weighted fine-tuning (RWF) of the LLM and duration-aware classifier-free guidance (CFG) at inference. Both share the watermark embedding, detection, and extraction procedures.</p>
         <figure class="architecture-figure">
           <div class="architecture-panels">
             <div class="architecture-panel tts-panel">
-              <a class="figure-link" href="assets/tts.png" aria-label="Open the duration-controllable TTS architecture at full size"><img src="assets/tts.png" alt="Architecture of the duration-controllable TTS model in DuraMark." width="778" height="343" loading="lazy"></a>
+              <a class="figure-link" href="data/tts.png" aria-label="Open the duration-controllable TTS architecture at full size"><img src="data/tts.png" alt="Duration-controllable TTS" width="2104" height="864" loading="lazy"></a>
               <p class="panel-caption">(a) Duration-controllable TTS</p>
             </div>
             <div class="architecture-panel extractor-panel">
-              <a class="figure-link" href="assets/duration-extractor.png" aria-label="Open the duration extractor architecture at full size"><img src="assets/duration-extractor.png" alt="Architecture of the duration extractor used to recover syllable durations." width="442" height="372" loading="lazy"></a>
+              <a class="figure-link" href="data/extractor.png" aria-label="Open the duration extractor architecture at full size"><img src="data/extractor.png" alt="Duration detector" width="1140" height="896" loading="lazy"></a>
               <p class="panel-caption">(b) Duration extractor</p>
             </div>
           </div>
-          <figcaption>Fig. 1. Architectures of the duration-controllable TTS and duration extractor used in DuraMark.</figcaption>
-        </figure>
-        <figure class="enhancement-figure">
-          <a class="figure-link" href="assets/enhanced-duration-control.png" aria-label="Open the enhanced duration control figure at full size"><img src="assets/enhanced-duration-control.png" alt="Enhanced duration control in DuraMark: reward-weighted fine-tuning of the LLM on the left, and inference with duration-aware CFG on the right." width="1097" height="667" loading="lazy"></a>
-          <figcaption>Fig. 2. Enhanced duration control in DuraMark: reward-weighted fine-tuning (left) and inference with duration-aware CFG (right).</figcaption>
+          <figcaption>Fig. 1 Architectures of the duration-controllable TTS and duration extractor used in DuraMark.</figcaption>
         </figure>
       </section>
-
       <section id="results" aria-labelledby="results-title">
         <h2 id="results-title" class="section-title">Results</h2>
-        <p>The following examples are synthesized by DuraMark-Enh using texts from the Chinese AISHELL-3 test set.</p>
+        <p>Evaluation was performed on the Chinese AISHELL-3 test set. We compared DuraMark against three state-of-the-art signal-level baselines: AudioSeal, Timbre and WavMark.</p>
         <div class="audio-results">
           <h3>AISHELL-3</h3>
-          <p id="sample-context" class="sample-context" hidden></p>
-          <div class="sample-status" id="sample-status" role="status" aria-live="polite">Loading audio examples…</div>
-          <div class="table-scroll" id="sample-table-wrapper" hidden>
+          <div class="table-scroll">
             <table class="audio-table">
-              <caption class="visually-hidden">DuraMark-Enh synthesized speech examples from AISHELL-3</caption>
-              <thead><tr><th scope="col">Text</th><th scope="col">DuraMark-Enh</th></tr></thead>
-              <tbody id="samples"></tbody>
+              <caption class="visually-hidden">AISHELL-3 speech examples: Unwatermarked, AudioSeal, Timbre, WavMark, and DuraMark</caption>
+              <thead><tr><th scope="col">Text</th><th scope="col">Unwatermarked</th><th scope="col">AudioSeal</th><th scope="col">Timbre</th><th scope="col">WavMark</th><th scope="col">DuraMark</th></tr></thead>
+              <tbody><tr><td><p class="transcript" lang="zh-Hans">但是他们会想方设法的，从我们口里面逼出证据。</p></td>
+<td class="audio-cell" data-label="Unwatermarked"><audio controls preload="metadata" aria-label="Play Unwatermarked example 1"><source src="data/speech/unwatermarked/0013.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="AudioSeal"><audio controls preload="metadata" aria-label="Play AudioSeal example 1"><source src="data/speech/audioseal/0013_1111111011111101.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="Timbre"><audio controls preload="metadata" aria-label="Play Timbre example 1"><source src="data/speech/timbre/0013_111111101111110101011010010001_24.355.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="WavMark"><audio controls preload="metadata" aria-label="Play WavMark example 1"><source src="data/speech/wavmark/0013_1110111110010110_37.794.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="DuraMark"><audio controls preload="metadata" aria-label="Play DuraMark example 1"><source src="data/speech/duramark/0013_01000101.wav" type="audio/wav">Your browser does not support audio playback.</audio></td></tr>
+<tr><td><p class="transcript" lang="zh-Hans">那个激情酒吧，是个服食倒卖摇头丸的一个窝点。</p></td>
+<td class="audio-cell" data-label="Unwatermarked"><audio controls preload="metadata" aria-label="Play Unwatermarked example 2"><source src="data/speech/unwatermarked/0229.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="AudioSeal"><audio controls preload="metadata" aria-label="Play AudioSeal example 2"><source src="data/speech/audioseal/0229_1010010001101000.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="Timbre"><audio controls preload="metadata" aria-label="Play Timbre example 2"><source src="data/speech/timbre/0229_101001000110100000111001100011_24.856.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="WavMark"><audio controls preload="metadata" aria-label="Play WavMark example 2"><source src="data/speech/wavmark/0229_0101011000111101_38.341.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="DuraMark"><audio controls preload="metadata" aria-label="Play DuraMark example 2"><source src="data/speech/duramark/0229_00001000.wav" type="audio/wav">Your browser does not support audio playback.</audio></td></tr>
+<tr><td><p class="transcript" lang="zh-Hans">原来大三元的下面就是霹雳堂啊，怪不得我穿红裤衩儿都会输钱。</p></td>
+<td class="audio-cell" data-label="Unwatermarked"><audio controls preload="metadata" aria-label="Play Unwatermarked example 3"><source src="data/speech/unwatermarked/0251.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="AudioSeal"><audio controls preload="metadata" aria-label="Play AudioSeal example 3"><source src="data/speech/audioseal/0251_1110100101010011.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="Timbre"><audio controls preload="metadata" aria-label="Play Timbre example 3"><source src="data/speech/timbre/0251_111010010101001110111110101000_25.133.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="WavMark"><audio controls preload="metadata" aria-label="Play WavMark example 3"><source src="data/speech/wavmark/0251_0010110010101111_37.629.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="DuraMark"><audio controls preload="metadata" aria-label="Play DuraMark example 3"><source src="data/speech/duramark/0251_11000101.wav" type="audio/wav">Your browser does not support audio playback.</audio></td></tr>
+<tr><td><p class="transcript" lang="zh-Hans">此时手机响起，医生才知道妻女被绑架，唯有亚当死才能救家人。</p></td>
+<td class="audio-cell" data-label="Unwatermarked"><audio controls preload="metadata" aria-label="Play Unwatermarked example 4"><source src="data/speech/unwatermarked/0283.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="AudioSeal"><audio controls preload="metadata" aria-label="Play AudioSeal example 4"><source src="data/speech/audioseal/0283_1100110011110011.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="Timbre"><audio controls preload="metadata" aria-label="Play Timbre example 4"><source src="data/speech/timbre/0283_110011001111001111010010100000_25.651.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="WavMark"><audio controls preload="metadata" aria-label="Play WavMark example 4"><source src="data/speech/wavmark/0283_1001101011100111_38.051.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="DuraMark"><audio controls preload="metadata" aria-label="Play DuraMark example 4"><source src="data/speech/duramark/0283_01110000.wav" type="audio/wav">Your browser does not support audio playback.</audio></td></tr>
+<tr><td><p class="transcript" lang="zh-Hans">昨天看到的洛爷挖的那座遍布鱼鳞的坟坑儿，就是八古转坟坑儿。</p></td>
+<td class="audio-cell" data-label="Unwatermarked"><audio controls preload="metadata" aria-label="Play Unwatermarked example 5"><source src="data/speech/unwatermarked/0418.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="AudioSeal"><audio controls preload="metadata" aria-label="Play AudioSeal example 5"><source src="data/speech/audioseal/0418_0001100100001100.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="Timbre"><audio controls preload="metadata" aria-label="Play Timbre example 5"><source src="data/speech/timbre/0418_000110010000110010100100000001_25.764.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="WavMark"><audio controls preload="metadata" aria-label="Play WavMark example 5"><source src="data/speech/wavmark/0418_1100111100111110_37.250.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="DuraMark"><audio controls preload="metadata" aria-label="Play DuraMark example 5"><source src="data/speech/duramark/0418_00001000.wav" type="audio/wav">Your browser does not support audio playback.</audio></td></tr>
+<tr><td><p class="transcript" lang="zh-Hans">不能让他们再这样乱下去了，我想了想，抬手让大家先安静下来。</p></td>
+<td class="audio-cell" data-label="Unwatermarked"><audio controls preload="metadata" aria-label="Play Unwatermarked example 6"><source src="data/speech/unwatermarked/0530.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="AudioSeal"><audio controls preload="metadata" aria-label="Play AudioSeal example 6"><source src="data/speech/audioseal/0530_0110110010100011.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="Timbre"><audio controls preload="metadata" aria-label="Play Timbre example 6"><source src="data/speech/timbre/0530_011011001010001110000000111110_25.195.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="WavMark"><audio controls preload="metadata" aria-label="Play WavMark example 6"><source src="data/speech/wavmark/0530_1111010010011101_37.684.wav" type="audio/wav">Your browser does not support audio playback.</audio></td>
+<td class="audio-cell" data-label="DuraMark"><audio controls preload="metadata" aria-label="Play DuraMark example 6"><source src="data/speech/duramark/0530_10001110.wav" type="audio/wav">Your browser does not support audio playback.</audio></td></tr></tbody>
             </table>
           </div>
-          <noscript><p class="sample-status">Enable JavaScript to load the audio examples and their transcripts.</p></noscript>
         </div>
       </section>
-      <footer class="paper-footer"><a href="https://github.com/muzw/duramark_enh_demo">Demo repository</a><span aria-hidden="true"> · </span><a href="https://muzw.github.io/duramark_demo/">Original demo</a></footer>
     </main>
   </body>
 </html>

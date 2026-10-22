@@ -22,6 +22,7 @@ sup { position: relative; top: -.35em; font-size: .7em; line-height: 0; vertical
 .paper-header { text-align: center; margin-bottom: 48px; }
 h1 { margin-bottom: 24px; font-size: 40px; font-weight: 500; line-height: 1.2; }
 .author-names { margin-bottom: 8px; line-height: 1.75; }
+.legacy-affiliation { margin-bottom: 2px; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
 .affiliations p { margin-bottom: 2px; font-size: 14px; line-height: 1.6; }
 .corresponding-author { margin: 7px 0 0; font-size: 14px; }
 .paper-links { margin: 15px 0; font-size: 14px; }
@@ -49,13 +50,14 @@ figcaption { margin-top: 15px; text-align: center; line-height: 1.5; }
 .sample-context { margin: 0 0 20px; font-size: 14px; text-align: center; color: #6c757d; }
 .table-scroll { overflow-x: auto; max-width: 100%; -webkit-overflow-scrolling: touch; }
 .audio-table { width: 100%; border-collapse: collapse; vertical-align: middle; }
-.audio-table th { padding: 14px 16px; border-bottom: 2px solid #dee2e6; font-weight: 600; text-align: center; }
-.audio-table th:first-child { width: 58%; }
-.audio-table td { padding: 24px 16px; border-bottom: 1px solid #dee2e6; vertical-align: middle; }
+.audio-table th { padding: 14px 8px; border-bottom: 2px solid #dee2e6; font-weight: 600; text-align: center; }
+.audio-table { min-width: 1080px; }
+.audio-table th:first-child { width: 24%; }
+.audio-table td { padding: 24px 8px; border-bottom: 1px solid #dee2e6; vertical-align: middle; }
 .audio-table tbody tr:hover { background-color: #f8f9fa; }
 .transcript { margin: 0; font-size: 16px; line-height: 1.9; overflow-wrap: anywhere; }
 .audio-cell { text-align: center; }
-audio { display: block; width: 100%; min-width: 240px; max-width: 320px; margin-inline: auto; min-height: 40px; }
+audio { display: block; width: 100%; min-width: 150px; max-width: 150px; margin-inline: auto; min-height: 40px; }
 .audio-metadata { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px 14px; margin-top: 10px; color: #6c757d; font-size: 12px; }
 .watermark-bits { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; color: #495057; letter-spacing: .07em; }
 .audio-error { margin: 10px 0 0; color: #b02a37; font-size: 13px; }
@@ -71,7 +73,7 @@ audio { display: block; width: 100%; min-width: 240px; max-width: 320px; margin-
 @media (max-width: 900px) {
   .paper-container { padding: 32px; margin-block: 24px; }
   h1 { font-size: 34px; }
-  .audio-table th:first-child { width: 54%; }
+  .audio-table th:first-child { width: 24%; }
   .audio-table td { padding-inline: 12px; }
 }
 @media (max-width: 600px) {
@@ -79,7 +81,7 @@ audio { display: block; width: 100%; min-width: 240px; max-width: 320px; margin-
   .paper-header { margin-bottom: 36px; }
   h1 { font-size: 29px; line-height: 1.25; margin-bottom: 22px; }
   .author-names { font-size: 15px; }
-  .affiliations p, .corresponding-author, .paper-links { font-size: 12px; }
+  .legacy-affiliation, .affiliations p, .corresponding-author, .paper-links { font-size: 12px; }
   .badge { font-size: 10px; }
   .section-title { font-size: 25px; margin-top: 30px; }
   .architecture-panels { gap: 18px; align-items: center; flex-direction: column; }
@@ -95,7 +97,7 @@ audio { display: block; width: 100%; min-width: 240px; max-width: 320px; margin-
   .audio-table tr { padding-block: 16px; border-bottom: 1px solid #dee2e6; }
   .audio-table tr:last-child { border-bottom: 0; }
   .audio-table td { padding: 8px 0; border: 0; }
-  .audio-cell::before { content: "DuraMark-Enh"; display: block; margin-bottom: 8px; color: #6c757d; font-size: 12px; text-align: left; }
+  .audio-cell::before { content: attr(data-label); display: block; margin-bottom: 8px; color: #6c757d; font-size: 12px; text-align: left; }
   audio { min-width: 0; max-width: 100%; }
   .audio-results { margin-top: 28px; padding: 24px 16px 10px; }
   .sample-context { font-size: 12px; }
